@@ -30,7 +30,7 @@ def developer(desarrollador: str):
     if not isinstance(desarrollador, str):
         return {'Mensaje': 'El argumento "desarrollador" debe ser una cadena de texto (str).'}
     
-    df = pd.read_parquet('c:\\Users\\Sofia\\Desktop\\Clean Data\\developer.parquet')      # cargamos dataframe
+    df = pd.read_parquet('Clean Data/developer.parquet')      # cargamos dataframe
 
     desarrollador = desarrollador.lower()                       # pasamos desarrollador ingresado a minúsculas
     desarrolladores = list(df['developer'].unique())            # obtenemos lista de todos los desarrolladores
@@ -67,7 +67,7 @@ def userdata(user_id: str):
     if not isinstance(user_id, str):
         return {'Mensaje': 'El argumento user_id debe ser una cadena de texto.'}
 
-    df = pd.read_parquet('c:\\Users\\Sofia\\Desktop\\Clean Data\\.parquet')               # cargamos dataframe desde archivo
+    df = pd.read_parquet('Clean Data/userdata.parquet')               # cargamos dataframe desde archivo
     df= df[df['user_id'].isin([user_id])].reset_index(drop=True)        # filtramos dataframe por usuario ingresado
     
     if df.empty:                # si el usuario ingresado está mal o no existe
@@ -107,7 +107,7 @@ def UserForGenre(genero: str):
     genero = genero.lower()
 
     try:
-        df = pd.read_parquet('c:\\Users\\Sofia\\Desktop\\Clean Data\\userforgenre2.parquet')
+        df = pd.read_parquet('Clean Data/userforgenre2.parquet')
         df = df[df['genres'].isin([genero])].drop(columns='genres')
     except Exception:
         return {'Error': 'Género no encontrado. Ingrese un género válido'}
@@ -142,7 +142,7 @@ def best_developer_year(anio: int):
     except Exception as e:
         return {f'Error {e}': 'Debe insertar un número entero.'}
     
-    df = pd.read_parquet('c:\\Users\\Sofia\\Desktop\\Clean Data\\best_developer_year.parquet')
+    df = pd.read_parquet('Clean Data/best_developer_year.parquet')
     anios = list(df['Año'].unique())
     anios = [int(x) for x in anios]
     
@@ -182,7 +182,7 @@ def developer_reviews_analysis(desarrolladora: str):
     
     desarrolladora = desarrolladora.lower()
     
-    df = pd.read_parquet('c:\\Users\\Sofia\\Desktop\\Clean Data\\developer_reviews_analysis.parquet')
+    df = pd.read_parquet('Clean Data/developer_reviews_analysis.parquet')
     
     developers = list(df['developer'].unique()) 
 
