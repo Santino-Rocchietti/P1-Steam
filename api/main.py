@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import pandas as pd 
-from recommender_item_item import item_item_recom
+from .recommender_item_item import item_item_recom
+
 
 app = FastAPI()
 
