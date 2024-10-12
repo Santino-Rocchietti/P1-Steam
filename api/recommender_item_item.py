@@ -14,7 +14,7 @@ def item_item_recom(item_id: int, n_recom: int = 5, umbral: float = 0.999):
             raise HTTPException(status_code=400, detail='Ingrese un id de producto válido')
 
         indice = df_names[df_names['id'] == item_id].index[0]
-        df_items = pd.read_parquet('Sistema de Recomendacion/item_features_complete.parquet')
+        df_items = pd.read_parquet('Sistema de Recomendacion/item_item_features.parquet')
 
         # Convertir las columnas a tipo numérico
         df_items = df_items.apply(pd.to_numeric, errors='coerce')
