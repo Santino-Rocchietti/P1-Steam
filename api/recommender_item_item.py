@@ -4,7 +4,7 @@ from operator import itemgetter
 
 def item_item_recom(item_id, n_recom=5, umbral= 0.999):
     
-    df_names = pd.read_parquet('../Recommender System/item_names.parquet')      # cargamos el arghivo de nombres
+    df_names = pd.read_parquet('Sistema de Recomendacion/item_names.parquet')      # cargamos el arghivo de nombres
 
     try: 
         item_id = int(item_id)
@@ -13,7 +13,7 @@ def item_item_recom(item_id, n_recom=5, umbral= 0.999):
         return {'Mensaje': 'Ingrese un id de producto válido',                  # mensaje de error en caso de no existir id
                 'Error': e}
     
-    df_items = pd.read_parquet('../Recommender System/item_features_complete.parquet')  # cargamos archivo de features
+    df_items = pd.read_parquet('Sistema de Recomendacion/item_features_complete.parquet')  # cargamos archivo de features
 
     similaridades = {}                  # iniciamos diccionario de similaridades
     contador = 0                        # contador para realizar corte por umbral
