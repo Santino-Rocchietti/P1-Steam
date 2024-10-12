@@ -1,44 +1,55 @@
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from operator import itemgetter
+from fastapi import FastAPI, HTTPException
 
-def item_item_recom(item_id, n_recom=5, umbral= 0.999):
-    
-    df_names = pd.read_parquet('Sistema de Recomendacion/item_names.parquet')      # cargamos el arghivo de nombres
+app = FastAPI()
 
-    try: 
-        item_id = int(item_id)
-        indice = df_names[df_names['id'] == item_id].index[0]                   # verificamos existencia del id ingresado
+@app.get("/recommend/{item_id}")
+def item_item_recom(item_id: int, n_recom: int = 5, umbral: float = 0.999):
+    try:
+        # Cargamos el archivo de nombres
+        df_names = pd.read_parquet('Sistema de Recomendacion/item_names.parquet')
+
+        # Verificamos la existencia del id ingresado
+        if item_id not in df_names['id'].values:
+            raise HTTPException(status_code=400, detail='Ingrese un id de producto válido')
+
+        indice = df_names[df_names['id'] == item_id].index[0]  # Obtenemos el índice del producto
+
+        # Cargamos el archivo de características
+        df_items = pd.read_parquet('Sistema de Recomendacion/item_features_complete.parquet')
+
+        similaridades = {}
+        contador = 0
+
+        # Recorremos el dataframe
+        for i in range(len(df_items)):
+            if i != indice:  # No tomamos el índice del juego de entrada
+                sim = cosine_similarity(
+                    df_items.iloc[indice, :].values.reshape(1, -1),
+                    df_items.iloc[i, :].values.reshape(1, -1)
+                )[0][0]
+                similaridades[i] = sim
+                if sim > umbral:
+                    contador += 1
+                if contador > n_recom:
+                    break
+
+        # Ordenamos las similaridades
+        similaridades_sorted = sorted(similaridades.items(), key=itemgetter(1), reverse=True)
+
+        # Creamos la lista de recomendaciones
+        items_recomendados = []
+        for i in range(min(n_recom, len(similaridades_sorted))):
+            idx = similaridades_sorted[i][0]
+            items_recomendados.append({
+                'item_id': df_names.loc[idx, 'id'],
+                'app_name': df_names.loc[idx, 'app_name']
+            })
+
+        return {"recommendations": items_recomendados}  # Retornamos el diccionario
+
     except Exception as e:
-        return {'Mensaje': 'Ingrese un id de producto válido',                  # mensaje de error en caso de no existir id
-                'Error': e}
-    
-    df_items = pd.read_parquet('Sistema de Recomendacion/item_features_complete.parquet')  # cargamos archivo de features
+        raise HTTPException(status_code=500, detail=f'Ocurrió un error inesperado: {str(e)}')
 
-    similaridades = {}                  # iniciamos diccionario de similaridades
-    contador = 0                        # contador para realizar corte por umbral
-    
-    for i in range(len(df_items)):      # recorremos el dataframe
-
-        if i != indice:                 # no tomamos el indice del juego de entrada
-
-            sim = cosine_similarity(df_items.iloc[indice,:].values.reshape(1,-1), df_items.iloc[i,:].values.reshape(1,-1))[0][0]
-            similaridades[i] = sim      # calclualmos la similaridad y la guardamos en el diccionario
-            if sim > umbral:            # verificamos si la similaridad es mayor al umbral predeterimnado
-                contador += 1           # si es mayor, sumamos 1 al contador
-            if contador > n_recom:      # si se supera la cantidad de recomendaciones del contador, detenemos la búsqueda
-                break
-    
-    similaridades_sorted = sorted(similaridades.items(), key= itemgetter(1), reverse=True)  # ordenamos las similaridades por valores
-
-    items_recomendados = []             # creamos diccionario vacío para acumular los juegos recomendados
-
-    for i in range(n_recom):            # nos quedamos con los indices de los n_recom primeros juegos
-        items_recomendados.append(similaridades_sorted[i][0])
-
-    resultado = {                       # generamos diccionario para retornar
-                f'item_id: {df_names.loc[items_recomendados[i],"id"]}': df_names.loc[items_recomendados[i],"app_name" ]
-                for i in range(len(items_recomendados))
-    }
-
-    return resultado                    # retornamos diccionario
