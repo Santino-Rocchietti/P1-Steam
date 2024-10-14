@@ -122,7 +122,7 @@ Recuerda que puedes consultar la documentación de la API agregando `/docs`. O i
 
 En el siguiente [video](https://youtu.be/1PR_IbBr3WA) puede verse el funcionamiento de esta API
 
-(el ultimo endpoint no se muestra en el video puesto que me da error interno y por mas que intente solucionarlo no lo logre, sin embargo la funcion esta creada para ingresar el id, que de 5 juegos e inclusive decidir que tan parecidos son los juegos usando un umbral)
+(el ultimo endpoint no se muestra en el video puesto que me da error como si no pudiera reconocer los ID y por mas que intente solucionarlo no lo logre, sin embargo la funcion esta creada para ingresar el id, que de los juegos similares e inclusive decidir que tan parecidos son los juegos usando un umbral)
 
 
 
