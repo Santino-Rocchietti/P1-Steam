@@ -47,3 +47,18 @@ Puedes encontrarlos [aquí](https://github.com/Santino-Rocchietti/P1-Steam/tree/
 En cada uno de los archivos encontrarás el código comentado, lo que permitirá entender las modificaciones realizadas durante el proceso. Los datos resultantes fueron exportados en formato **Parquet** y los puedes encontrar en este [enlace](https://github.com/Santino-Rocchietti/P1-Steam/tree/main/Clean%20Data)
 
 
+
+
+Luego de realizada la **limpieza de los datos**, se llevó a cabo un [**Análisis Exploratorio de Datos (EDA)**](https://github.com/Santino-Rocchietti/P1-Steam/blob/main/EDA_steam.ipynb). El objetivo del análisis es entender las relaciones entre los diferentes datos, encontrar insights que permitan mejorar la interpretación de los mismos y retroalimentar el desarrollo del modelo con nuevas perspectivas.
+
+En el notebook encontrarás visualizaciones que muestran información interesante, como:
+
+- Qué géneros de juegos son los más consumidos
+- Cuáles son los juegos más caros
+- Qué palabras son las más frecuentes en los títulos
+
+Este análisis proporciona una base sólida para tomar decisiones informadas en el desarrollo del modelo.
+
+Por ejemplo la siguiente grafica muestra el top 10 de desarolladores con el juego mas caro
+![download](https://github.com/user-attachments/assets/30c343b7-415a-4d91-8d8f-cd5e36859a0a)
+
