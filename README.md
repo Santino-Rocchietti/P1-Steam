@@ -118,7 +118,7 @@ Los endpoints de la API son los siguientes:
 6. **Endpoint 6**: `/recomendacion_juego/{id_producto}`  
    Para el ID de producto ingresado, recomienda 5 juegos relacionados.
 
-Recuerda que puedes consultar la documentación de la API agregando `/docs`.
+Recuerda que puedes consultar la documentación de la API agregando `/docs`. O ingresando [aqui](https://p1-steam-2.onrender.com/docs)
 
 En el siguiente [video](https://youtu.be/1PR_IbBr3WA) puede verse el funcionamiento de esta API
 
