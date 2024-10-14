@@ -120,6 +120,8 @@ Los endpoints de la API son los siguientes:
 
 Recuerda que puedes consultar la documentación de la API agregando `/docs`.
 
+En el siguiente [video](https://youtu.be/1PR_IbBr3WA) puede verse el funcionamiento de esta API
+
 
 
 
