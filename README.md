@@ -4,7 +4,7 @@
 
 # Proyecto integrador 1 Steam:
 
-### En este repositorio se podra visualizar el primer proyecto integrador del Bootcamp Henry para Data Science.
+ En este repositorio se podra visualizar el primer proyecto integrador del Bootcamp Henry para Data Science.
 
 
 
@@ -13,7 +13,7 @@
 
 ### Situándonos en el rol de Data Scientist, desarrollaremos un Sistema de Recomendación para la plataforma de videojuegos online Steam Games. 
 
-### El MVP debe desplegarse como una API que pueda ser consumida desde la Web.
+ El MVP debe desplegarse como una API que pueda ser consumida desde la Web.
 
 
 
