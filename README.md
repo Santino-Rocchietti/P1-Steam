@@ -28,3 +28,5 @@
 
   
 - 'output_steam_games': aquí se encuentran los detalles de los juegos de steam, como género, tags, especificaciones.
+![Screenshot_4](https://github.com/user-attachments/assets/cdb03c4a-6431-43ef-945b-9ba9910a3038)
+![Screenshot_5](https://github.com/user-attachments/assets/25a57250-c3af-4cea-b341-d95bc8906e5e)
