@@ -30,3 +30,20 @@
 - 'output_steam_games': aquí se encuentran los detalles de los juegos de steam, como género, tags, especificaciones.
 ![Screenshot_4](https://github.com/user-attachments/assets/cdb03c4a-6431-43ef-945b-9ba9910a3038)
 ![Screenshot_5](https://github.com/user-attachments/assets/25a57250-c3af-4cea-b341-d95bc8906e5e)
+
+
+## ETL
+
+
+El proceso de **Extracción, Transformación y Carga (ETL)** fue desarrollado en tres **Jupyter notebooks** por separado, donde se realizó la **limpieza de los datos**, incluyendo:
+
+- Eliminación de duplicados
+- Eliminación de filas vacías
+- Tratamiento de valores nulos
+
+Puedes encontrarlos [aquí](https://github.com/Santino-Rocchietti/P1-Steam/tree/main/ETL)
+
+
+En cada uno de los archivos encontrarás el código comentado, lo que permitirá entender las modificaciones realizadas durante el proceso. Los datos resultantes fueron exportados en formato **Parquet** y los puedes encontrar en este [enlace](https://github.com/Santino-Rocchietti/P1-Steam/tree/main/Clean%20Data)
+
+
